@@ -75,6 +75,19 @@ function Tab.New(window, options, Library)
 		Text = self.Name,
 	}, nil, { TextColor3 = "SubText" })
 
+	-- accent indicator bar (visible only on the selected tab)
+	local indicator = New("Frame", {
+		Name = "Indicator",
+		AnchorPoint = Vector2.new(0, 0.5),
+		Position = UDim2.new(0, 2, 0.5, 0),
+		Size = UDim2.new(0, 3, 0, 16),
+		BorderSizePixel = 0,
+		Visible = false,
+		ZIndex = 3,
+	}, {
+		Creator.Corner(2),
+	}, { BackgroundColor3 = "Accent" })
+
 	local button = New("TextButton", {
 		Name = "Tab_" .. self.Name,
 		Size = UDim2.new(1, 0, 0, 30),
@@ -85,10 +98,12 @@ function Tab.New(window, options, Library)
 		LayoutOrder = options.LayoutOrder or 0,
 	}, {
 		Creator.Corner(7),
+		indicator,
 		iconInst,
 		tabLabel,
 	}, { BackgroundColor3 = "Selection" })
 	button.Parent = window.TabsContainer
+	self._indicator = indicator
 
 	self._button = button
 	self._iconInst = iconInst
@@ -145,6 +160,9 @@ function Tab.New(window, options, Library)
 
 	function self.SetSelected(selected)
 		local palette = Library.Themes.Palette()
+		if self._indicator then
+			self._indicator.Visible = selected
+		end
 		if selected then
 			button.BackgroundTransparency = 0
 			tabLabel.Font = Utility.Fonts.Medium
