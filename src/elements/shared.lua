@@ -81,11 +81,12 @@ function Shared.Row(Ctx, options)
 		Size = UDim2.new(1, 0, 0, height),
 		AutomaticSize = options.AutoHeight and Enum.AutomaticSize.Y or Enum.AutomaticSize.None,
 		BorderSizePixel = 0,
+		BackgroundTransparency = 1,
 		ClipsDescendants = true,
 	}, {
 		left,
 		control,
-	}, { BackgroundColor3 = "RowHover", BackgroundTransparency = 1 })
+	}, { BackgroundColor3 = "RowHover" })
 
 	Ctx.AttachRow(row)
 
@@ -122,6 +123,7 @@ function Shared.Object(Ctx, type_, instance, options)
 		Ctx.Library:RegisterFlag(self)
 		local pending = Ctx.Library:GetPendingConfig(flag)
 		if pending ~= nil and self.Set and self.Deserialize then
+			self._pendingRestore = true
 			task.defer(function()
 				if not self._destroyed and self.Instance and self.Instance.Parent ~= nil then
 					Utility.SafeCall("Config:" .. tostring(flag), function()
