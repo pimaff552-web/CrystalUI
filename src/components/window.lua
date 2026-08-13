@@ -580,7 +580,11 @@ function Window.New(config, Library)
 		self:Close()
 	end)
 	Creator.AddSignal(self.Connections, minBtn.Activated, function()
-		self:Minimize()
+		if config.MinimizeBehavior == "Collapse" then
+			self:Minimize()
+		else
+			self:Hide() -- default: yellow traffic light hides the window completely
+		end
 	end)
 	Creator.AddSignal(self.Connections, maxBtn.Activated, function()
 		self:Zoom()
