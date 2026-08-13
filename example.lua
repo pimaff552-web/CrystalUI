@@ -4,7 +4,8 @@
 --============================================================--
 
 local Crystal = loadstring(game:HttpGet(
-	"loadstring(game:HttpGet("https://raw.githubusercontent.com/pimaff552-web/CrystalUI/main/source.lua"))()
+	"https://raw.githubusercontent.com/pimaff552-web/CrystalUI/main/source.lua"
+))()
 
 local Window = Crystal:CreateWindow({
 	Name = "Crystal UI",
@@ -14,10 +15,12 @@ local Window = Crystal:CreateWindow({
 	LoadingTitle = "Crystal UI",
 	LoadingSubtitle = " polishing pixels…",
 	Theme = "Dark",                        -- "Dark" | "Light" | "Midnight" | custom
-	Acrylic = true,                        -- frosted blur behind the window
+	Acrylic = false,                       -- blur behind the window (off = clean look)
 	Size = UDim2.fromOffset(690, 460),
 	Resizable = true,
-	ToggleKey = "RightShift",              -- show/hide keybind
+	ToggleKey = "RightControl",            -- show/hide the whole window with Right Control
+	MinimizeBehavior = "Hide",             -- yellow button hides completely ("Collapse" keeps the title bar)
+	CloseBehavior = "Hide",                -- red button hides, dock pill / hotkey brings it back
 	Watermark = true,                      -- FPS / ping / clock pill
 	Debug = true,                          -- adds a Console tab to the sidebar
 
