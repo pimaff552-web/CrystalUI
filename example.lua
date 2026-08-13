@@ -4,8 +4,7 @@
 --============================================================--
 
 local Crystal = loadstring(game:HttpGet(
-	"https://raw.githubusercontent.com/YOUR_USERNAME/CrystalUI/main/source.lua"
-))()
+	"loadstring(game:HttpGet("https://raw.githubusercontent.com/pimaff552-web/CrystalUI/main/source.lua"))()
 
 local Window = Crystal:CreateWindow({
 	Name = "Crystal UI",
