@@ -95,7 +95,8 @@ See [`example.lua`](example.lua) for a tour of **every** element and feature.
 | `Acrylic` | bool | `false` | Frosted blur while the window is visible |
 | `Size` | UDim2 | `690×460` | Initial size (offsets) |
 | `Resizable` | bool | `true` | Bottom-right drag handle |
-| `ToggleKey` | string/KeyCode | `RightShift` | Show/hide hotkey |
+| `ToggleKey` | string/KeyCode | `RightShift` | Show/hide hotkey (e.g. `"RightControl"`) |
+| `MinimizeBehavior` | string | `"Hide"` | Yellow button: `"Hide"` hides the whole window · `"Collapse"` keeps the title bar |
 | `CloseBehavior` | string | `"Hide"` | `"Hide"` shows the dock pill · `"Destroy"` unloads the UI |
 | `LoadingEnabled` | bool | `true` | Splash screen (auto-skipped on mobile) |
 | `LoadingTitle` / `LoadingSubtitle` | string | derived | Splash text |

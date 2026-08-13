@@ -142,7 +142,14 @@ function Toggle.New(options, Ctx)
 		end
 	end)
 
+	-- one flip per physical click, period (debounce shield)
+	local lastFlip = 0
 	Creator.AddSignal(self._conns, hitZone.Activated, function()
+		local now = os.clock()
+		if now - lastFlip < 0.15 then
+			return
+		end
+		lastFlip = now
 		self:Set(not self.Value)
 	end)
 

@@ -37,8 +37,12 @@ end
 
 local Cache = {}
 
+-- Cache-buster: GitHub's raw CDN can serve stale files for several minutes
+-- after you re-upload. A unique query parameter forces a fresh copy.
+local CACHE_BUST = "?cb=" .. tostring(math.floor((os.clock() % 100000) * 1000))
+
 local function httpGet(path)
-	local url = BASE .. path
+	local url = BASE .. path .. CACHE_BUST
 	local lastErr = nil
 	for attempt = 1, 3 do
 		local ok, result = pcall(function()

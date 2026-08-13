@@ -21,7 +21,7 @@ local HttpService = game:GetService("HttpService")
 
 local Crystal = {}
 
-Crystal.Version = "1.0.0"
+Crystal.Version = "1.1.0"
 Crystal.Name = "Crystal UI"
 Crystal.Options = setmetatable({}, {
 	__index = function(_, key)
@@ -354,5 +354,7 @@ function Crystal:Destroy()
 		self._Gui = nil
 	end
 end
+
+print(("[Crystal UI] v%s loaded — welcome."):format(Crystal.Version))
 
 return Crystal

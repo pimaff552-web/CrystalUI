@@ -61,7 +61,13 @@ function Button.New(options, Ctx)
 
 	Shared.RowHover(row, self._conns)
 
+	local lastFire = 0
 	local function fire()
+		local now = os.clock()
+		if now - lastFire < 0.12 then
+			return
+		end
+		lastFire = now
 		Utility.Tween(pill, { Time = 0.07 }, { Size = UDim2.new(0, math.max(56, pillWidth - 4), 0, 24) })
 		task.delay(0.09, function()
 			if pill and pill.Parent ~= nil then
